@@ -1,43 +1,108 @@
-# Python
+# =========================
+# SISTEMA OPERACIONAL
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Linux
+*.swp
+*.swo
+*~
+.nfs*
+
+# =========================
+# PYTHON
+# =========================
+
+# Bytecode
 __pycache__/
 *.py[cod]
 *$py.class
 
-# Build
-build/
-dist/
-*.egg-info/
-.eggs/
-
-# Virtualenv
-venv/
+# Virtual env
 .venv/
+venv/
 env/
-.env/
+ENV/
 
 # PyInstaller
+build/
+dist/
 *.spec
 
-# Tests
-.pytest_cache/
-.tox/
-.coverage
-coverage.xml
+# Pip
+pip-log.txt
+pip-delete-this-directory.txt
 
-# Logs
-*.log
+# Pytest / Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
 
 # Jupyter
-.ipynb_checkpoints/
+.ipynb_checkpoints
 
-# Typing
-.mypy_cache/
-.pytype/
+# =========================
+# RUST / CARGO / CLAP
+# =========================
 
-# IDE
+# Build output
+target/
+
+# Rustfmt backup
+*.rs.bk
+
+# Cargo lock (BINÁRIO → IGNORA)
+# Se for LIB, remova essa linha
+Cargo.lock
+
+# =========================
+# LOGS / TEMP
+# =========================
+
+*.log
+logs/
+tmp/
+temp/
+
+# =========================
+# IDE / EDITOR
+# =========================
+
+# VSCode
 .vscode/
-.idea/
 
-# OS
-.DS_Store
-Thumbs.db
+# JetBrains
+.idea/
+*.iml
+
+# Sublime
+*.sublime-project
+*.sublime-workspace
+
+# =========================
+# BINÁRIOS GERADOS
+# =========================
+
+*.exe
+*.out
+*.app
+*.bin
+
+# =========================
+# ENV / SECRETS
+# =========================
+
+.env
+.env.local
+.env.production
+.env.development
+
+# =========================
+# CACHE GERAL
+# =========================
+
+.cache/
