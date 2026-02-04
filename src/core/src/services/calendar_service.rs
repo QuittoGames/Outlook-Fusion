@@ -36,6 +36,7 @@ pub struct CalendarService {
 
 impl CalendarService {
     pub async fn add_event(&self, token: &str) -> Result<(), Box<dyn std::error::Error>> {
+        print!("trafor data");
         let start: DateTime<FixedOffset> = DateTime::parse_from_rfc3339(&self.date_start)
             .expect("Data de início inválida");
         let end: DateTime<FixedOffset> = DateTime::parse_from_rfc3339(&self.date_end)
@@ -51,15 +52,25 @@ impl CalendarService {
             description = some_desc.clone();
         }
 
+        print!("build json");
         let body = json!({
             "subject": self.subject,
             "body": { "contentType": "HTML", "content": description },
-            "start": { "dateTime": start.to_rfc3339(), "timeZone": "America/Sao_Paulo" },
-            "end":   { "dateTime": end.to_rfc3339(), "timeZone": "America/Sao_Paulo" },
-            "location": { "displayName": "Online" }
+            "start": {
+                "dateTime": start.to_rfc3339(),
+                "timeZone": self.timezone
+            },
+            "end": {
+                "dateTime": end.to_rfc3339(),
+                "timeZone": self.timezone
+            },
+            "location": {
+                "displayName": self.location
+            }
         });
 
         APIController::add_calendar(token, "https://graph.microsoft.com/v1.0/me/events", &body).await?;
+        print!("send");
 
         Ok(())
     }
